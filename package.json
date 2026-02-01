@@ -1,0 +1,31 @@
+{
+  "name": "live-chat",
+  "version": "1.0.0",
+  "description": "Real-time chat application built with Socket.io, Express, and MongoDB",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "build": "echo 'No build step required for plain JavaScript project'"
+  },
+  "keywords": [
+    "chat",
+    "socket.io",
+    "real-time",
+    "express",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
