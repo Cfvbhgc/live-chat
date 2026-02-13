@@ -1,0 +1,33 @@
+# Docker Compose configuration for the live-chat application.
+# Spins up two services: the Node.js application server and a MongoDB instance.
+# The mongo service uses a named volume so chat data persists across restarts.
+
+services:
+  # ── Node.js application ────────────────────────────────────────────
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: live-chat-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongo:27017/livechat
+    depends_on:
+      - mongo
+
+  # ── MongoDB database ───────────────────────────────────────────────
+  mongo:
+    image: mongo:7
+    container_name: live-chat-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
